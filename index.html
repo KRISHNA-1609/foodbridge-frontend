@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodBridge</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  
+
+</head>
+<body>
+  <nav>
+    <h1>🍱 FoodBridge</h1>
+    <div id="nav-buttons">
+      <button onclick="showSection('login')">Login</button>
+      <button onclick="showSection('register')">Register</button>
+    </div>
+  </nav>
+
+  <div id="login" class="section">
+    <h2>Login</h2>
+    <input type="email" id="login-email" placeholder="Email" />
+    <input type="password" id="login-password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="login-msg" class="error"></p>
+  </div>
+
+  <div id="register" class="section hidden">
+    <h2>Register</h2>
+    <input type="text" id="reg-name" placeholder="Full Name" />
+    <input type="email" id="reg-email" placeholder="Email" />
+    <input type="password" id="reg-password" placeholder="Password" />
+    <select id="reg-role">
+      <option value="donor">Donor (Restaurant/Hotel)</option>
+      <option value="ngo">NGO / Charity</option>
+      <option value="volunteer">Volunteer</option>
+    </select>
+    <input type="text" id="reg-phone" placeholder="Phone Number" />
+    <input type="text" id="reg-address" placeholder="Address" />
+    <button onclick="register()">Register</button>
+    <p id="reg-msg" class="error"></p>
+  </div>
+
+  <div id="dashboard" class="section hidden">
+    <div class="profile-bar">
+      <div>
+        <h2>Welcome, <span id="user-name"></span>!</h2>
+        <p class="role-badge" id="user-role"></p>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div id="donor-section" class="hidden card">
+      <h3>Create Food Listing</h3>
+      <input type="text" id="food-title" placeholder="Title (e.g. Surplus Biryani)" />
+      <input type="text" id="food-type" placeholder="Food Type (e.g. Rice Dish)" />
+      <div class="row">
+        <input type="number" id="food-quantity" placeholder="Quantity" />
+        <select id="food-unit">
+          <option value="kg">kg</option>
+          <option value="liters">liters</option>
+          <option value="portions">portions</option>
+          <option value="boxes">boxes</option>
+        </select>
+      </div>
+      <input type="text" id="food-address" placeholder="Pickup Address" />
+      <label>Pickup Time</label>
+      <input type="datetime-local" id="food-pickup" />
+      <label>Expiry Time</label>
+      <input type="datetime-local" id="food-expiry" />
+      <button onclick="createListing()">Post Listing</button>
+      <p id="listing-msg" class="success"></p>
+    </div>
+
+    <div class="card" id="listings-section">
+      <div class="listings-header">
+        <h3>Available Food Listings</h3>
+        <button onclick="fetchListings()">Refresh</button>
+      </div>
+      <div id="listings-container"><p class="muted">Click Refresh to load listings.</p></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script>
+  <div class="bg-gray-900 text-white p-4 rounded-xl"></div> -->
+</body>
+</html>
